@@ -2,172 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>DigiHust A02 Project Report - A. Raffy</title>
+<title>DigiHust A02: Lead Conversion Prediction Report - A. Raffy</title>
 <style>
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.7;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 24px;
-        color: #1f2937;
-        background-color: #ffffff;
+    @page {
+        size: A4;
+        margin: 16mm 14mm 16mm 14mm;
+        @bottom-right {
+            content: counter(page);
+        }
     }
-    h1 { color: #1e3a8a; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; font-size: 26px; }
-    h2 { color: #1d4ed8; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; margin-top: 36px; font-size: 20px; }
-    h3 { color: #374151; font-size: 16px; margin-top: 24px; }
-    pre {
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 20px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        font-family: inherit;
-        font-size: 14px;
-        line-height: 1.6;
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1f2937;
+        line-height: 1.55;
+        font-size: 13px;
+        margin: 0;
+        padding: 0;
+    }
+    .header-card {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        color: #ffffff;
+        padding: 16px 20px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+    .header-card h1 {
+        color: #ffffff;
+        margin: 0 0 6px 0;
+        font-size: 20px;
+        border: none;
+        padding: 0;
+    }
+    .header-card p {
+        margin: 2px 0;
+        font-size: 12px;
+        color: #e0e7ff;
+    }
+    h1 {
+        color: #1e3a8a;
+        font-size: 18px;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 5px;
+        margin-top: 24px;
+        margin-bottom: 10px;
+        page-break-after: avoid;
+    }
+    h2 {
+        color: #1d4ed8;
+        font-size: 15px;
+        border-bottom: 1px solid #f3f4f6;
+        padding-bottom: 4px;
+        margin-top: 20px;
+        margin-bottom: 8px;
+        page-break-after: avoid;
+    }
+    h3 {
+        color: #374151;
+        font-size: 13px;
+        margin-top: 14px;
+        margin-bottom: 6px;
+        page-break-after: avoid;
+    }
+    p {
+        margin: 6px 0;
+        text-align: justify;
+    }
+    ul, ol {
+        margin: 6px 0;
+        padding-left: 22px;
+    }
+    li {
+        margin-bottom: 3px;
     }
     table {
         border-collapse: collapse;
         width: 100%;
-        margin: 24px 0;
+        margin: 12px 0;
+        font-size: 11.5px;
+        page-break-inside: avoid;
     }
     th, td {
         border: 1px solid #cbd5e1;
-        padding: 10px 14px;
+        padding: 6px 10px;
         text-align: left;
     }
     th {
         background-color: #f1f5f9;
         font-weight: 600;
-        color: #334155;
+        color: #1e293b;
     }
     tr:nth-child(even) {
         background-color: #f8fafc;
     }
+    code {
+        background-color: #f1f5f9;
+        color: #0f172a;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 11.5px;
+    }
+    pre {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 11px;
+        line-height: 1.4;
+        overflow-x: auto;
+        page-break-inside: avoid;
+    }
+    blockquote {
+        border-left: 3.5px solid #3b82f6;
+        margin: 10px 0;
+        padding: 6px 12px;
+        background-color: #eff6ff;
+        color: #1e3a8a;
+    }
     hr {
         border: none;
-        border-top: 1px solid #e2e8f0;
-        margin: 32px 0;
+        border-top: 1px solid #e5e7eb;
+        margin: 18px 0;
     }
-    .header-box {
-        background: #eff6ff;
-        border-left: 4px solid #2563eb;
-        padding: 16px 20px;
-        border-radius: 4px;
-        margin-bottom: 28px;
+    .footer-note {
+        margin-top: 24px;
+        padding-top: 10px;
+        border-top: 1px solid #e2e8f0;
+        font-size: 11px;
+        color: #64748b;
+        text-align: center;
     }
 </style>
 </head>
 <body>
-<div class="header-box">
-    <strong>DigiHust Assignment A02 — End-to-End Machine Learning Pipeline</strong><br>
-    <strong>Student:</strong> A. Raffy | <strong>ID:</strong> DGH2600156 | <strong>Status:</strong> Completed &amp; Verified
+
+<div class="header-card">
+    <h1>DigiHust Assignment A02: End-to-End Machine Learning Pipeline</h1>
+    <p><strong>Project Report:</strong> Lead Conversion Prediction System | <strong>Student:</strong> A. Raffy (ID: DGH2600156)</p>
+    <p><strong>Dataset:</strong> X Education CRM (9,240 leads) | <strong>Champion Model:</strong> Tuned Random Forest (F1: 0.8671, ROC-AUC: 0.9526)</p>
 </div>
-<pre># DigiHust Assignment A02: End-to-End Machine Learning Pipeline
-# Project Report: Lead Conversion Prediction System
 
-**Student Name:** A. Raffy  
-**Student ID:** DGH2600156  
-**Assignment:** DigiHust Assignment A02 — End-to-End Machine Learning Pipeline  
-**Dataset:** X Education Leads Dataset (9,240 records, 37 original features)  
-**Target Variable:** `Converted` (0 = Did not convert, 1 = Converted)  
-**GitHub Repository:** [https://github.com/Raffy0-1/lead-conversion-pipeline](https://github.com/Raffy0-1/lead-conversion-pipeline)  
-
----
-
-## Executive Summary
-
-In online higher education, acquiring prospective student leads requires significant marketing investment across search ads, organic channels, referrals, and content. However, typical industry conversion rates hover between **30% to 40%** (in our dataset, exactly **38.5%** of 9,240 leads converted). Without predictive intelligence, sales teams expend equal time and phone outreach calling low-intent browsers and high-intent buyers alike, resulting in salesperson fatigue, slow response times for high-value leads, and lost revenue.
-
-This project designs, implements, and validates a robust, leakage-free **Lead Conversion Prediction Machine Learning Pipeline**. Using historical CRM interaction data from **X Education**, we engineered predictive signals, established strict train/test data isolation, built Scikit-Learn `ColumnTransformer` preprocessing workflows, benchmarked two core classification families (**Logistic Regression** and **Random Forest**), and performed 5-fold cross-validated hyperparameter optimization (`GridSearchCV`) targeting the **F1-Score**.
-
-### Key Results on Untouched Test Data (1,848 Leads):
-- **Best Model:** Tuned Random Forest Classifier (`n_estimators=200`, `max_depth=20`, `class_weight=&#x27;balanced_subsample&#x27;`).
-- **ROC-AUC Score:** **0.9526** (exceptional discriminatory capability across all decision thresholds).
-- **F1-Score:** **0.8671** (balanced harmonic mean of precision and recall on the positive class).
-- **Recall:** **87.08%** (captures 620 out of 712 converted leads in the test set).
-- **Precision:** **86.35%** (86.4% of leads flagged for high-priority sales contact successfully enroll).
-- **Primary Predictive Driver:** **Total Time Spent on Website** accounts for ~25% of the model&#x27;s total predictive weight, followed by referral lead sources (`Welingak Websites`, `Reference`) and interactive engagement (`SMS Sent`).
-
----
-
-## 1. Business Problem &amp; Project Objectives
-
-### 1.1 The Business Challenge
-X Education markets courses to working professionals and students. Leads are generated through website form fills, Google search ads, organic search, and direct referrals. Currently, the internal sales counseling team calls all incoming leads sequentially. This creates two critical inefficiencies:
-1. **Sales Capacity Waste:** Sales representatives spend hours dialing leads who casually browsed the site without purchase intent.
-2. **Opportunity Cost:** High-intent leads wait too long to receive a follow-up call, cooling off or enrolling with a competing education provider.
-
-### 1.2 Machine Learning Formulation
-- **Type of Problem:** Supervised Binary Classification.
-- **Target Variable ($y$):** `Converted` $\in \{0, 1\}$
-  - $0$: Lead did not purchase or enroll.
-  - $1$: Lead enrolled as a paying customer.
-- **Primary Optimization Metric:** **F1-Score** and **ROC-AUC**.
-  - *Why not raw Accuracy?* Accuracy is misleading under class imbalance (~61.5% non-converters). A naive model predicting 0 for everyone would achieve 61.5% accuracy but zero business utility.
-  - *Why balance Precision &amp; Recall?* High recall ensures the sales team doesn&#x27;t miss valuable paying students. High precision protects sales rep bandwidth by avoiding wild goose chases.
-
----
-
-## 2. Dataset Overview &amp; Data Quality Assessment
-
-The dataset comprises **9,240 rows and 37 columns** representing demographic attributes, website browsing metrics, communication channel touches, and lead generation sources.
-
-### 2.1 Handling &quot;Select&quot; Dropdown Placeholders (Hidden Missing Data)
-A key data quality finding in X Education&#x27;s CRM is that four major dropdown fields defaulted to the word `&quot;Select&quot;` when a user skipped the question:
-- `Specialization`
-- `How did you hear about X Education`
-- `Lead Profile`
-- `City`
-
-Treating `&quot;Select&quot;` as a real category would corrupt model learning. All `&quot;Select&quot;` occurrences were systematically converted to `np.nan` (true missing values) so they could be properly addressed by the statistical imputation pipeline.
-
-### 2.2 Column Drops &amp; Rationales
-1. **Identifier Columns:** `Prospect ID` and `Lead Number` were dropped because unique alphanumeric identifiers carry zero predictive signal and cause severe overfitting.
-2. **Constant (Zero-Variance) Columns:** Five features contained only a single value across all 9,240 rows:
-   - `Magazine`
-   - `Receive More Updates About Our Courses`
-   - `Update Supplym heap` / `Update Supply Chain Content`
-   - `Get updates on DM Content`
-   - `I agree to pay by cheque`  
-   *Action:* Dropped completely (zero variance provides zero information gain).
-3. **High-Missingness Columns (&gt;45% missing):**
-   - `Lead Quality` (~51.5% missing)
-   - `Asymmetrique Activity Index`, `Asymmetrique Profile Index`, `Asymmetrique Activity Score`, `Asymmetrique Profile Score` (~45.6% missing)  
-   *Action:* Dropped to avoid introducing excessive synthetic noise through mass imputation.
-4. **Duplicate Records:** The dataset was checked for duplicate records; **0 duplicates** were detected.
-
----
-
-## 3. Exploratory Data Analysis (EDA) &amp; Key Findings
-
-### 3.1 Distribution of the Target Variable
-- **Non-Converted (0):** 5,679 leads (**61.46%**)
-- **Converted (1):** 3,561 leads (**38.54%**)
-- *Takeaway:* Moderate class imbalance. Solved using stratified splitting and `class_weight=&#x27;balanced&#x27;`.
-
-### 3.2 Numerical Behavioral Drivers
-1. **Total Time Spent on Website:** This is by far the single strongest indicator of intent.
-   - Non-converted leads spent a median of **~160 seconds** on the site.
-   - Converted leads spent a median of **~700+ seconds** exploring course syllabus, pricing, and curriculum details.
-2. **TotalVisits &amp; Page Views Per Visit:**
-   - Most leads visit 2 to 5 times and view 2 to 4 pages per visit.
-   - However, extreme outliers existed (up to 251 visits and 55 page views per visit), necessitating robust outlier capping.
-
-### 3.3 Categorical Intent Drivers
-- **Lead Source:** Leads originating from **Welingak Websites** (~98% conversion rate) and **Reference** (~92% conversion rate) show virtually guaranteed conversion. Organic Search (~38%) and Direct Traffic (~32%) are larger volume but lower conversion channels.
-- **Last Activity:** Leads whose last activity was **SMS Sent** converted at ~63%, whereas leads with **Email Opened** converted at ~36%, and leads who **Unsubscribed** or **Bounced** converted at &lt;15%.
-
----
-
-## 4. Data Preprocessing &amp; Leakage Prevention Strategy
-
-Data leakage occurs when information from the test dataset leaks into the training process, producing unrealistically optimistic metrics that fail in production. We implemented a rigorous leakage-prevention architecture:
-
-```mermaid
-graph TD
+<h1>DigiHust Assignment A02: End-to-End Machine Learning Pipeline</h1>
+<h1>Project Report: Lead Conversion Prediction System</h1>
+<p><strong>Student Name:</strong> A. Raffy<br />
+<strong>Student ID:</strong> DGH2600156<br />
+<strong>Assignment:</strong> DigiHust Assignment A02 — End-to-End Machine Learning Pipeline<br />
+<strong>Dataset:</strong> X Education Leads Dataset (9,240 records, 37 original features)<br />
+<strong>Target Variable:</strong> <code>Converted</code> (0 = Did not convert, 1 = Converted)<br />
+<strong>GitHub Repository:</strong> <a href="https://github.com/Raffy0-1/lead-conversion-pipeline">https://github.com/Raffy0-1/lead-conversion-pipeline</a>  </p>
+<hr />
+<h2>Executive Summary</h2>
+<p>In online higher education, acquiring prospective student leads requires significant marketing investment across search ads, organic channels, referrals, and content. However, typical industry conversion rates hover between <strong>30% to 40%</strong> (in our dataset, exactly <strong>38.5%</strong> of 9,240 leads converted). Without predictive intelligence, sales teams expend equal time and phone outreach calling low-intent browsers and high-intent buyers alike, resulting in salesperson fatigue, slow response times for high-value leads, and lost revenue.</p>
+<p>This project designs, implements, and validates a robust, leakage-free <strong>Lead Conversion Prediction Machine Learning Pipeline</strong>. Using historical CRM interaction data from <strong>X Education</strong>, we engineered predictive signals, established strict train/test data isolation, built Scikit-Learn <code>ColumnTransformer</code> preprocessing workflows, benchmarked two core classification families (<strong>Logistic Regression</strong> and <strong>Random Forest</strong>), and performed 5-fold cross-validated hyperparameter optimization (<code>GridSearchCV</code>) targeting the <strong>F1-Score</strong>.</p>
+<h3>Key Results on Untouched Test Data (1,848 Leads):</h3>
+<ul>
+<li><strong>Best Model:</strong> Tuned Random Forest Classifier (<code>n_estimators=200</code>, <code>max_depth=20</code>, <code>class_weight='balanced_subsample'</code>).</li>
+<li><strong>ROC-AUC Score:</strong> <strong>0.9526</strong> (exceptional discriminatory capability across all decision thresholds).</li>
+<li><strong>F1-Score:</strong> <strong>0.8671</strong> (balanced harmonic mean of precision and recall on the positive class).</li>
+<li><strong>Recall:</strong> <strong>87.08%</strong> (captures 620 out of 712 converted leads in the test set).</li>
+<li><strong>Precision:</strong> <strong>86.35%</strong> (86.4% of leads flagged for high-priority sales contact successfully enroll).</li>
+<li><strong>Primary Predictive Driver:</strong> <strong>Total Time Spent on Website</strong> accounts for ~25% of the model's total predictive weight, followed by referral lead sources (<code>Welingak Websites</code>, <code>Reference</code>) and interactive engagement (<code>SMS Sent</code>).</li>
+</ul>
+<hr />
+<h2>1. Business Problem &amp; Project Objectives</h2>
+<h3>1.1 The Business Challenge</h3>
+<p>X Education markets courses to working professionals and students. Leads are generated through website form fills, Google search ads, organic search, and direct referrals. Currently, the internal sales counseling team calls all incoming leads sequentially. This creates two critical inefficiencies:
+1. <strong>Sales Capacity Waste:</strong> Sales representatives spend hours dialing leads who casually browsed the site without purchase intent.
+2. <strong>Opportunity Cost:</strong> High-intent leads wait too long to receive a follow-up call, cooling off or enrolling with a competing education provider.</p>
+<h3>1.2 Machine Learning Formulation</h3>
+<ul>
+<li><strong>Type of Problem:</strong> Supervised Binary Classification.</li>
+<li><strong>Target Variable ($y$):</strong> <code>Converted</code> $\in {0, 1}$</li>
+<li>$0$: Lead did not purchase or enroll.</li>
+<li>$1$: Lead enrolled as a paying customer.</li>
+<li><strong>Primary Optimization Metric:</strong> <strong>F1-Score</strong> and <strong>ROC-AUC</strong>.</li>
+<li><em>Why not raw Accuracy?</em> Accuracy is misleading under class imbalance (~61.5% non-converters). A naive model predicting 0 for everyone would achieve 61.5% accuracy but zero business utility.</li>
+<li><em>Why balance Precision &amp; Recall?</em> High recall ensures the sales team doesn't miss valuable paying students. High precision protects sales rep bandwidth by avoiding wild goose chases.</li>
+</ul>
+<hr />
+<h2>2. Dataset Overview &amp; Data Quality Assessment</h2>
+<p>The dataset comprises <strong>9,240 rows and 37 columns</strong> representing demographic attributes, website browsing metrics, communication channel touches, and lead generation sources.</p>
+<h3>2.1 Handling "Select" Dropdown Placeholders (Hidden Missing Data)</h3>
+<p>A key data quality finding in X Education's CRM is that four major dropdown fields defaulted to the word <code>"Select"</code> when a user skipped the question:
+- <code>Specialization</code>
+- <code>How did you hear about X Education</code>
+- <code>Lead Profile</code>
+- <code>City</code></p>
+<p>Treating <code>"Select"</code> as a real category would corrupt model learning. All <code>"Select"</code> occurrences were systematically converted to <code>np.nan</code> (true missing values) so they could be properly addressed by the statistical imputation pipeline.</p>
+<h3>2.2 Column Drops &amp; Rationales</h3>
+<ol>
+<li><strong>Identifier Columns:</strong> <code>Prospect ID</code> and <code>Lead Number</code> were dropped because unique alphanumeric identifiers carry zero predictive signal and cause severe overfitting.</li>
+<li><strong>Constant (Zero-Variance) Columns:</strong> Five features contained only a single value across all 9,240 rows:</li>
+<li><code>Magazine</code></li>
+<li><code>Receive More Updates About Our Courses</code></li>
+<li><code>Update Supplym heap</code> / <code>Update Supply Chain Content</code></li>
+<li><code>Get updates on DM Content</code></li>
+<li><code>I agree to pay by cheque</code><br />
+<em>Action:</em> Dropped completely (zero variance provides zero information gain).</li>
+<li><strong>High-Missingness Columns (&gt;45% missing):</strong></li>
+<li><code>Lead Quality</code> (~51.5% missing)</li>
+<li><code>Asymmetrique Activity Index</code>, <code>Asymmetrique Profile Index</code>, <code>Asymmetrique Activity Score</code>, <code>Asymmetrique Profile Score</code> (~45.6% missing)<br />
+<em>Action:</em> Dropped to avoid introducing excessive synthetic noise through mass imputation.</li>
+<li><strong>Duplicate Records:</strong> The dataset was checked for duplicate records; <strong>0 duplicates</strong> were detected.</li>
+</ol>
+<hr />
+<h2>3. Exploratory Data Analysis (EDA) &amp; Key Findings</h2>
+<h3>3.1 Distribution of the Target Variable</h3>
+<ul>
+<li><strong>Non-Converted (0):</strong> 5,679 leads (<strong>61.46%</strong>)</li>
+<li><strong>Converted (1):</strong> 3,561 leads (<strong>38.54%</strong>)</li>
+<li><em>Takeaway:</em> Moderate class imbalance. Solved using stratified splitting and <code>class_weight='balanced'</code>.</li>
+</ul>
+<h3>3.2 Numerical Behavioral Drivers</h3>
+<ol>
+<li><strong>Total Time Spent on Website:</strong> This is by far the single strongest indicator of intent.</li>
+<li>Non-converted leads spent a median of <strong>~160 seconds</strong> on the site.</li>
+<li>Converted leads spent a median of <strong>~700+ seconds</strong> exploring course syllabus, pricing, and curriculum details.</li>
+<li><strong>TotalVisits &amp; Page Views Per Visit:</strong></li>
+<li>Most leads visit 2 to 5 times and view 2 to 4 pages per visit.</li>
+<li>However, extreme outliers existed (up to 251 visits and 55 page views per visit), necessitating robust outlier capping.</li>
+</ol>
+<h3>3.3 Categorical Intent Drivers</h3>
+<ul>
+<li><strong>Lead Source:</strong> Leads originating from <strong>Welingak Websites</strong> (~98% conversion rate) and <strong>Reference</strong> (~92% conversion rate) show virtually guaranteed conversion. Organic Search (~38%) and Direct Traffic (~32%) are larger volume but lower conversion channels.</li>
+<li><strong>Last Activity:</strong> Leads whose last activity was <strong>SMS Sent</strong> converted at ~63%, whereas leads with <strong>Email Opened</strong> converted at ~36%, and leads who <strong>Unsubscribed</strong> or <strong>Bounced</strong> converted at &lt;15%.</li>
+</ul>
+<hr />
+<h2>4. Data Preprocessing &amp; Leakage Prevention Strategy</h2>
+<p>Data leakage occurs when information from the test dataset leaks into the training process, producing unrealistically optimistic metrics that fail in production. We implemented a rigorous leakage-prevention architecture:</p>
+<pre><code class="language-mermaid">graph TD
     A[Raw Dataset: 9,240 rows] --&gt; B[Data Cleaning: Drop IDs, Drop Constant Columns, Select -&gt; NaN]
     B --&gt; C[Stratified 80/20 Train-Test Split]
     C --&gt; D[Train Set: 7,392 rows]
@@ -180,146 +243,200 @@ graph TD
     I --&gt; J[Fit Models on Train Only]
     J --&gt; K[Evaluate Once on Untouched Test Set]
     E -.-&gt; K
-```
-
-### 4.1 Strict 80/20 Stratified Train-Test Split
-- Split executed **before** computing any scalers, imputers, or outlier cutoffs.
-- `train_test_split(..., test_size=0.20, random_state=42, stratify=y)` ensures identical 61.5% / 38.5% class balance across both train and test splits.
-
-### 4.2 Outlier Capping (Learned Strictly on Training Data)
-- **TotalVisits:** Capped at the 99th percentile of the training set (**17 visits**).
-- **Page Views Per Visit:** Capped at the 99th percentile of the training set (**9 page views**).
-- Test data is transformed using these exact train-learned boundaries without re-estimating on test data.
-
-### 4.3 Scikit-Learn Pipeline &amp; ColumnTransformer
-- **Numerical Features Pipeline:**
-  1. `SimpleImputer(strategy=&#x27;median&#x27;)`: Imputes missing numeric entries with median to protect against skew.
-  2. `StandardScaler()`: Normalizes features to mean $\mu=0$ and standard deviation $\sigma=1$ for gradient-based convergence and distance stability.
-- **Categorical Features Pipeline:**
-  1. `SimpleImputer(strategy=&#x27;constant&#x27;, fill_value=&#x27;Unknown&#x27;)`: Treats missing category entries as an explicit informative `&quot;Unknown&quot;` class.
-  2. `OneHotEncoder(handle_unknown=&#x27;ignore&#x27;, drop=&#x27;first&#x27;)`: Converts categorical strings into binary indicator columns while avoiding the dummy variable trap.
-
----
-
-## 5. Feature Engineering
-
-Domain features were engineered and scientifically validated:
-1. **`Activity_Channel_Count` (Created &amp; Retained):** Sum of active communication touchpoints (Website visits, Email opened, SMS received). Adds clear signal indicating multi-channel engaged prospects.
-2. **`Total_Engagement` (Tested &amp; Discarded):** We evaluated an interaction term ($\text{TotalVisits} \times \text{Total Time Spent}$). While intuitively appealing, regression diagnostics showed strong multicollinearity with `Total Time Spent on Website` without improving cross-validated F1 score. In accordance with parsimony principles, this redundant feature was pruned.
-
----
-
-## 6. Model Training &amp; Hyperparameter Tuning
-
-We compared two distinct model paradigms:
-1. **Logistic Regression:** A linear, highly interpretable probabilistic model with clear log-odds coefficients.
-2. **Random Forest Classifier:** A non-linear ensemble of decision trees capturing complex non-linear interactions without making normality assumptions.
-
-### 6.1 Class Imbalance Treatment
-Both model architectures utilized cost-sensitive weighting (`class_weight=&#x27;balanced&#x27;` for Logistic Regression and `class_weight=&#x27;balanced_subsample&#x27;` for Random Forest) to penalize false negatives proportionally to class frequency.
-
-### 6.2 5-Fold Cross-Validated Hyperparameter Optimization (`GridSearchCV`)
-Hyperparameter optimization was executed using 5-fold stratified cross-validation optimizing for the **F1-Score**:
-
-- **Logistic Regression Grid:**
-  - $C \in [0.01, 0.1, 1, 10]$
-  - $\text{solver} \in [\text{&#x27;lbfgs&#x27;}, \text{&#x27;liblinear&#x27;}]$
-  - **Optimal Hyperparameters:** $C = 1.0$, $\text{solver} = \text{&#x27;lbfgs&#x27;}$, $\text{class\_weight} = \text{&#x27;balanced&#x27;}$.
-  - **Best CV F1-Score:** **0.8694**
-
-- **Random Forest Grid (48 candidate combinations, 240 fits):**
-  - $\text{n\_estimators} \in [100, 200]$
-  - $\text{max\_depth} \in [10, 15, 20, \text{None}]$
-  - $\text{min\_samples\_split} \in [2, 5]$
-  - $\text{min\_samples\_leaf} \in [1, 2]$
-  - $\text{class\_weight} \in [\text{&#x27;balanced&#x27;}, \text{&#x27;balanced\_subsample&#x27;}]$
-  - **Optimal Hyperparameters:** $\text{n\_estimators} = 200$, $\text{max\_depth} = 20$, $\text{min\_samples\_split} = 2$, $\text{min\_samples\_leaf} = 1$, $\text{class\_weight} = \text{&#x27;balanced\_subsample&#x27;}$.
-  - **Best CV F1-Score:** **0.8788**
-
----
-
-## 7. Comparative Performance Analysis (Untouched Test Set)
-
-The models were evaluated on the held-out test set of **1,848 leads** (1,136 non-converted, 712 converted):
-
-### 7.1 Comprehensive Metric Benchmark Table
-
-| Model | Precision | Recall | F1-Score | ROC-AUC | Accuracy |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| **Logistic Regression (Baseline)** | 0.8490 | 0.8764 | 0.8625 | 0.9491 | 0.8923 |
-| **Random Forest (Baseline)** | 0.8644 | 0.8413 | 0.8527 | 0.9478 | 0.8880 |
-| **Tuned Logistic Regression** | 0.8490 | 0.8764 | 0.8625 | 0.9491 | 0.8923 |
-| **Tuned Random Forest (Champion)** | **0.8635** | **0.8708** | **0.8671** | **0.9526** | **0.8972** |
-
-### 7.2 Confusion Matrix Analysis (Tuned Random Forest)
-- **True Negatives (TN):** 1,038 (Correctly identified non-converters — saves unnecessary calls)
-- **False Positives (FP):** 98 (Non-converters mistakenly flagged — low 8.6% false alarm rate)
-- **False Negatives (FN):** 92 (Converted leads missed — only 12.9% missed opportunity rate)
-- **True Positives (TP):** 620 (Successfully captured paying students)
-
-### 7.3 ROC Curve Interpretation
-With an **ROC-AUC of 0.9526**, the model achieves a 95.3% probability of assigning a higher lead score to a true converting prospect than to a non-converting lead.
-
----
-
-## 8. Model Interpretability &amp; Business Insights
-
-### 8.1 Top Predictive Features (Random Forest Feature Importance)
-1. **Total Time Spent on Website (~25.3% importance):** Leads who spend more than 8–10 minutes browsing the site demonstrate massive commitment.
-2. **Lead Source — Welingak Websites &amp; Reference:** Referred leads are pre-qualified and show near-immediate intent to purchase.
-3. **Last Activity — SMS Sent:** Leads responding to SMS notifications are actively engaged in the conversion loop.
-4. **TotalVisits &amp; Page Views Per Visit:** Regular return visits reflect continuous evaluation and curriculum comparison.
-
-### 8.2 Top Logistic Regression Coefficients (Directional Drivers)
-- **Strong Positive Drivers ($\uparrow$ Conversion Odds):**
-  - High `Total Time Spent on Website` ($\beta \approx +1.15$)
-  - Lead Source `Welingak Websites` ($\beta \approx +2.85$)
-  - Lead Source `Reference` ($\beta \approx +2.20$)
-  - Last Activity `SMS Sent` ($\beta \approx +1.28$)
-- **Strong Negative Drivers ($\downarrow$ Conversion Odds):**
-  - Last Activity `Olark Chat Conversation` ($\beta \approx -1.10$) — casual informational questions that rarely convert.
-  - Specialization `Unknown` / Unselected ($\beta \approx -0.45$) — lack of curriculum focus indicates browsing curiosity rather than career urgency.
-
----
-
-## 9. Actionable Business Recommendations &amp; Lead Scoring Strategy
-
-We propose translating model probabilities into a **3-Tier Lead Prioritization Framework**:
-
-| Tier | Predicted Probability | Lead Classification | Recommended Sales Action &amp; SLA |
-|:---:|:---:|:---:|:---|
-| **Tier 1: Hot Leads** | **$\ge 0.70$** | High-Intent Buyer | **15-minute phone call SLA:** Assign immediately to senior course advisors. Emphasize enrollment incentives and scholarship deadlines. |
-| **Tier 2: Warm Leads** | **$0.40 - 0.69$** | Considering Options | **Same-day outreach SLA:** Trigger automated WhatsApp/SMS course overview; schedule follow-up call within 4–6 hours. |
-| **Tier 3: Cold Leads** | **$&lt; 0.40$** | Casual Browser | **Zero phone calls:** Enroll in automated email nurture campaign (free webinars, alumni success stories) until website engagement signals escalate. |
-
-### Quantifiable Business ROI:
-By adopting this framework, the sales team can **eliminate ~60% of unproductive phone calls** (saving hundreds of staff hours weekly) while **capturing &gt;87% of all converting students**.
-
----
-
-## 10. Limitations &amp; Deployment Considerations
-
-1. **CRM Tagging Leakage in Production:** Field agents occasionally tag leads (e.g., in `Tags` like `&quot;Already a student&quot;` or `&quot;Interested in other courses&quot;`). In a production deployment, any feature recorded *after* initial lead capture must be strictly excluded.
-2. **Temporal Drift:** Changing market conditions, marketing campaigns, or course fee revisions will cause data drift. We recommend retraining the pipeline monthly.
-3. **Correlation vs. Causation:** Spending time on the website correlates with conversion, but forcing a lead to stay on the website does not cause conversion. Interventions must focus on delivering rich, engaging content that addresses buyer hesitations.
-
----
-
-## 11. Conclusion &amp; DigiHust Assignment A02 Compliance
-
-This end-to-end Machine Learning project completes all objectives specified in **DigiHust Assignment A02**:
+</code></pre>
+<h3>4.1 Strict 80/20 Stratified Train-Test Split</h3>
+<ul>
+<li>Split executed <strong>before</strong> computing any scalers, imputers, or outlier cutoffs.</li>
+<li><code>train_test_split(..., test_size=0.20, random_state=42, stratify=y)</code> ensures identical 61.5% / 38.5% class balance across both train and test splits.</li>
+</ul>
+<h3>4.2 Outlier Capping (Learned Strictly on Training Data)</h3>
+<ul>
+<li><strong>TotalVisits:</strong> Capped at the 99th percentile of the training set (<strong>17 visits</strong>).</li>
+<li><strong>Page Views Per Visit:</strong> Capped at the 99th percentile of the training set (<strong>9 page views</strong>).</li>
+<li>Test data is transformed using these exact train-learned boundaries without re-estimating on test data.</li>
+</ul>
+<h3>4.3 Scikit-Learn Pipeline &amp; ColumnTransformer</h3>
+<ul>
+<li><strong>Numerical Features Pipeline:</strong></li>
+<li><code>SimpleImputer(strategy='median')</code>: Imputes missing numeric entries with median to protect against skew.</li>
+<li><code>StandardScaler()</code>: Normalizes features to mean $\mu=0$ and standard deviation $\sigma=1$ for gradient-based convergence and distance stability.</li>
+<li><strong>Categorical Features Pipeline:</strong></li>
+<li><code>SimpleImputer(strategy='constant', fill_value='Unknown')</code>: Treats missing category entries as an explicit informative <code>"Unknown"</code> class.</li>
+<li><code>OneHotEncoder(handle_unknown='ignore', drop='first')</code>: Converts categorical strings into binary indicator columns while avoiding the dummy variable trap.</li>
+</ul>
+<hr />
+<h2>5. Feature Engineering</h2>
+<p>Domain features were engineered and scientifically validated:
+1. <strong><code>Activity_Channel_Count</code> (Created &amp; Retained):</strong> Sum of active communication touchpoints (Website visits, Email opened, SMS received). Adds clear signal indicating multi-channel engaged prospects.
+2. <strong><code>Total_Engagement</code> (Tested &amp; Discarded):</strong> We evaluated an interaction term ($\text{TotalVisits} \times \text{Total Time Spent}$). While intuitively appealing, regression diagnostics showed strong multicollinearity with <code>Total Time Spent on Website</code> without improving cross-validated F1 score. In accordance with parsimony principles, this redundant feature was pruned.</p>
+<hr />
+<h2>6. Model Training &amp; Hyperparameter Tuning</h2>
+<p>We compared two distinct model paradigms:
+1. <strong>Logistic Regression:</strong> A linear, highly interpretable probabilistic model with clear log-odds coefficients.
+2. <strong>Random Forest Classifier:</strong> A non-linear ensemble of decision trees capturing complex non-linear interactions without making normality assumptions.</p>
+<h3>6.1 Class Imbalance Treatment</h3>
+<p>Both model architectures utilized cost-sensitive weighting (<code>class_weight='balanced'</code> for Logistic Regression and <code>class_weight='balanced_subsample'</code> for Random Forest) to penalize false negatives proportionally to class frequency.</p>
+<h3>6.2 5-Fold Cross-Validated Hyperparameter Optimization (<code>GridSearchCV</code>)</h3>
+<p>Hyperparameter optimization was executed using 5-fold stratified cross-validation optimizing for the <strong>F1-Score</strong>:</p>
+<ul>
+<li><strong>Logistic Regression Grid:</strong></li>
+<li>$C \in [0.01, 0.1, 1, 10]$</li>
+<li>$\text{solver} \in [\text{'lbfgs'}, \text{'liblinear'}]$</li>
+<li><strong>Optimal Hyperparameters:</strong> $C = 1.0$, $\text{solver} = \text{'lbfgs'}$, $\text{class_weight} = \text{'balanced'}$.</li>
+<li>
+<p><strong>Best CV F1-Score:</strong> <strong>0.8694</strong></p>
+</li>
+<li>
+<p><strong>Random Forest Grid (48 candidate combinations, 240 fits):</strong></p>
+</li>
+<li>$\text{n_estimators} \in [100, 200]$</li>
+<li>$\text{max_depth} \in [10, 15, 20, \text{None}]$</li>
+<li>$\text{min_samples_split} \in [2, 5]$</li>
+<li>$\text{min_samples_leaf} \in [1, 2]$</li>
+<li>$\text{class_weight} \in [\text{'balanced'}, \text{'balanced_subsample'}]$</li>
+<li><strong>Optimal Hyperparameters:</strong> $\text{n_estimators} = 200$, $\text{max_depth} = 20$, $\text{min_samples_split} = 2$, $\text{min_samples_leaf} = 1$, $\text{class_weight} = \text{'balanced_subsample'}$.</li>
+<li><strong>Best CV F1-Score:</strong> <strong>0.8788</strong></li>
+</ul>
+<hr />
+<h2>7. Comparative Performance Analysis (Untouched Test Set)</h2>
+<p>The models were evaluated on the held-out test set of <strong>1,848 leads</strong> (1,136 non-converted, 712 converted):</p>
+<h3>7.1 Comprehensive Metric Benchmark Table</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Model</th>
+<th style="text-align: center;">Precision</th>
+<th style="text-align: center;">Recall</th>
+<th style="text-align: center;">F1-Score</th>
+<th style="text-align: center;">ROC-AUC</th>
+<th style="text-align: center;">Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Logistic Regression (Baseline)</strong></td>
+<td style="text-align: center;">0.8490</td>
+<td style="text-align: center;">0.8764</td>
+<td style="text-align: center;">0.8625</td>
+<td style="text-align: center;">0.9491</td>
+<td style="text-align: center;">0.8923</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Random Forest (Baseline)</strong></td>
+<td style="text-align: center;">0.8644</td>
+<td style="text-align: center;">0.8413</td>
+<td style="text-align: center;">0.8527</td>
+<td style="text-align: center;">0.9478</td>
+<td style="text-align: center;">0.8880</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tuned Logistic Regression</strong></td>
+<td style="text-align: center;">0.8490</td>
+<td style="text-align: center;">0.8764</td>
+<td style="text-align: center;">0.8625</td>
+<td style="text-align: center;">0.9491</td>
+<td style="text-align: center;">0.8923</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tuned Random Forest (Champion)</strong></td>
+<td style="text-align: center;"><strong>0.8635</strong></td>
+<td style="text-align: center;"><strong>0.8708</strong></td>
+<td style="text-align: center;"><strong>0.8671</strong></td>
+<td style="text-align: center;"><strong>0.9526</strong></td>
+<td style="text-align: center;"><strong>0.8972</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 Confusion Matrix Analysis (Tuned Random Forest)</h3>
+<ul>
+<li><strong>True Negatives (TN):</strong> 1,038 (Correctly identified non-converters — saves unnecessary calls)</li>
+<li><strong>False Positives (FP):</strong> 98 (Non-converters mistakenly flagged — low 8.6% false alarm rate)</li>
+<li><strong>False Negatives (FN):</strong> 92 (Converted leads missed — only 12.9% missed opportunity rate)</li>
+<li><strong>True Positives (TP):</strong> 620 (Successfully captured paying students)</li>
+</ul>
+<h3>7.3 ROC Curve Interpretation</h3>
+<p>With an <strong>ROC-AUC of 0.9526</strong>, the model achieves a 95.3% probability of assigning a higher lead score to a true converting prospect than to a non-converting lead.</p>
+<hr />
+<h2>8. Model Interpretability &amp; Business Insights</h2>
+<h3>8.1 Top Predictive Features (Random Forest Feature Importance)</h3>
+<ol>
+<li><strong>Total Time Spent on Website (~25.3% importance):</strong> Leads who spend more than 8–10 minutes browsing the site demonstrate massive commitment.</li>
+<li><strong>Lead Source — Welingak Websites &amp; Reference:</strong> Referred leads are pre-qualified and show near-immediate intent to purchase.</li>
+<li><strong>Last Activity — SMS Sent:</strong> Leads responding to SMS notifications are actively engaged in the conversion loop.</li>
+<li><strong>TotalVisits &amp; Page Views Per Visit:</strong> Regular return visits reflect continuous evaluation and curriculum comparison.</li>
+</ol>
+<h3>8.2 Top Logistic Regression Coefficients (Directional Drivers)</h3>
+<ul>
+<li><strong>Strong Positive Drivers ($\uparrow$ Conversion Odds):</strong></li>
+<li>High <code>Total Time Spent on Website</code> ($\beta \approx +1.15$)</li>
+<li>Lead Source <code>Welingak Websites</code> ($\beta \approx +2.85$)</li>
+<li>Lead Source <code>Reference</code> ($\beta \approx +2.20$)</li>
+<li>Last Activity <code>SMS Sent</code> ($\beta \approx +1.28$)</li>
+<li><strong>Strong Negative Drivers ($\downarrow$ Conversion Odds):</strong></li>
+<li>Last Activity <code>Olark Chat Conversation</code> ($\beta \approx -1.10$) — casual informational questions that rarely convert.</li>
+<li>Specialization <code>Unknown</code> / Unselected ($\beta \approx -0.45$) — lack of curriculum focus indicates browsing curiosity rather than career urgency.</li>
+</ul>
+<hr />
+<h2>9. Actionable Business Recommendations &amp; Lead Scoring Strategy</h2>
+<p>We propose translating model probabilities into a <strong>3-Tier Lead Prioritization Framework</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Tier</th>
+<th style="text-align: center;">Predicted Probability</th>
+<th style="text-align: center;">Lead Classification</th>
+<th style="text-align: left;">Recommended Sales Action &amp; SLA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Tier 1: Hot Leads</strong></td>
+<td style="text-align: center;"><strong>$\ge 0.70$</strong></td>
+<td style="text-align: center;">High-Intent Buyer</td>
+<td style="text-align: left;"><strong>15-minute phone call SLA:</strong> Assign immediately to senior course advisors. Emphasize enrollment incentives and scholarship deadlines.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Tier 2: Warm Leads</strong></td>
+<td style="text-align: center;"><strong>$0.40 - 0.69$</strong></td>
+<td style="text-align: center;">Considering Options</td>
+<td style="text-align: left;"><strong>Same-day outreach SLA:</strong> Trigger automated WhatsApp/SMS course overview; schedule follow-up call within 4–6 hours.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Tier 3: Cold Leads</strong></td>
+<td style="text-align: center;"><strong>$&lt; 0.40$</strong></td>
+<td style="text-align: center;">Casual Browser</td>
+<td style="text-align: left;"><strong>Zero phone calls:</strong> Enroll in automated email nurture campaign (free webinars, alumni success stories) until website engagement signals escalate.</td>
+</tr>
+</tbody>
+</table>
+<h3>Quantifiable Business ROI:</h3>
+<p>By adopting this framework, the sales team can <strong>eliminate ~60% of unproductive phone calls</strong> (saving hundreds of staff hours weekly) while <strong>capturing &gt;87% of all converting students</strong>.</p>
+<hr />
+<h2>10. Limitations &amp; Deployment Considerations</h2>
+<ol>
+<li><strong>CRM Tagging Leakage in Production:</strong> Field agents occasionally tag leads (e.g., in <code>Tags</code> like <code>"Already a student"</code> or <code>"Interested in other courses"</code>). In a production deployment, any feature recorded <em>after</em> initial lead capture must be strictly excluded.</li>
+<li><strong>Temporal Drift:</strong> Changing market conditions, marketing campaigns, or course fee revisions will cause data drift. We recommend retraining the pipeline monthly.</li>
+<li><strong>Correlation vs. Causation:</strong> Spending time on the website correlates with conversion, but forcing a lead to stay on the website does not cause conversion. Interventions must focus on delivering rich, engaging content that addresses buyer hesitations.</li>
+</ol>
+<hr />
+<h2>11. Conclusion &amp; DigiHust Assignment A02 Compliance</h2>
+<p>This end-to-end Machine Learning project completes all objectives specified in <strong>DigiHust Assignment A02</strong>:
 - [x] Full dataset inspection and quality assessment
-- [x] Resolution of hidden `&quot;Select&quot;` missing values
+- [x] Resolution of hidden <code>"Select"</code> missing values
 - [x] Leakage-free stratified train-test splitting (80/20)
-- [x] Scikit-Learn `Pipeline` and `ColumnTransformer` architecture
+- [x] Scikit-Learn <code>Pipeline</code> and <code>ColumnTransformer</code> architecture
 - [x] Comprehensive EDA with multiple distribution and correlation plots
 - [x] Baseline modeling with both Logistic Regression and Random Forest
-- [x] 5-fold cross-validated hyperparameter optimization (`GridSearchCV`)
+- [x] 5-fold cross-validated hyperparameter optimization (<code>GridSearchCV</code>)
 - [x] Multi-metric evaluation (Precision, Recall, F1, ROC-AUC, Confusion Matrix)
 - [x] Feature importance and coefficient interpretability
 - [x] Concrete business recommendations and ROI calculation
-- [x] Clean modular codebase ([src/](file:///c:/Users/Global/OneDrive/Documents/Doc/DigiHust/Tasks/Project%202/Leads%20Conversion%20Prediction/src/)) and fully executed Jupyter Notebook
-- [x] Live GitHub repository with clean commit history: [https://github.com/Raffy0-1/lead-conversion-pipeline](https://github.com/Raffy0-1/lead-conversion-pipeline)
-</pre>
+- [x] Clean modular codebase (<a href="file:///c:/Users/Global/OneDrive/Documents/Doc/DigiHust/Tasks/Project%202/Leads%20Conversion%20Prediction/src/">src/</a>) and fully executed Jupyter Notebook
+- [x] Live GitHub repository with clean commit history: <a href="https://github.com/Raffy0-1/lead-conversion-pipeline">https://github.com/Raffy0-1/lead-conversion-pipeline</a></p>
+
+<div class="footer-note">
+    DigiHust Assignment A02 — Student: A. Raffy (DGH2600156) — Repository: https://github.com/Raffy0-1/lead-conversion-pipeline
+</div>
+
 </body>
 </html>
